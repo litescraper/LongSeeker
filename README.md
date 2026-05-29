@@ -301,3 +301,5 @@ If you find LongSeeker useful in your research, please consider citing:
 Paper: [arXiv:2605.05191](https://arxiv.org/abs/2605.05191)
 
 Model: [LongSeeker-30B-SFT](https://huggingface.co/PolarSeeker/LongSeeker-30B-SFT)
+
+Data: [OpenSeeker-v1-Data](https://huggingface.co/datasets/PolarSeeker/OpenSeeker-v1-Data)
