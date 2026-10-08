@@ -2,6 +2,7 @@ import asyncio
 import json
 import http.client
 import os
+from urllib.parse import urlparse
 
 SERPER_KEY = os.environ.get('SERPER_API_KEY')
 
@@ -53,8 +54,12 @@ def google_search_with_serp(query: str, filter_huggingface: bool = False):
     results = None
     for i in range(5):
         try:
-            conn = http.client.HTTPSConnection("google.serper.dev", timeout=20)
-            conn.request("POST", "/search", payload, headers)
+            base_url = urlparse(os.environ.get("SERPER_BASE_URL") or "https://google.serper.dev")
+            if base_url.scheme not in ("http", "https"):
+                raise ValueError("SERPER_BASE_URL must use http or https")
+            connection = http.client.HTTPSConnection if base_url.scheme == "https" else http.client.HTTPConnection
+            conn = connection(base_url.netloc, timeout=20)
+            conn.request("POST", f"{base_url.path.rstrip('/')}/search", payload, headers)
             res = conn.getresponse()
             data = res.read()
             if not data:

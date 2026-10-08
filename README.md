@@ -303,3 +303,7 @@ Paper: [arXiv:2605.05191](https://arxiv.org/abs/2605.05191)
 Model: [LongSeeker-30B-SFT](https://huggingface.co/PolarSeeker/LongSeeker-30B-SFT)
 
 Data: [OpenSeeker-v1-Data](https://huggingface.co/datasets/PolarSeeker/OpenSeeker-v1-Data)
+
+### Compatible search endpoints
+
+Support any Serper.dev-compatible endpoint (like litescrape.com, serpbase.dev, serpensapi.org, and others). Set `SERPER_BASE_URL` to the provider base URL without `/search` and use its API key. The existing Serper endpoint remains the default.
